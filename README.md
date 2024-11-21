@@ -50,7 +50,7 @@ pip install langchain-linkup
 
    os.environ["LINKUP_API_KEY"] = "YOUR_LINKUP_API_KEY"
    # or dotenv.load_dotenv()
-   retriever = LinkupRetriever()
+   retriever = LinkupRetriever(...)
    ...
    ```
 
@@ -59,7 +59,7 @@ pip install langchain-linkup
    ```python
    from langchain_linkup import LinkupRetriever
 
-   retriever = LinkupRetriever(api_key="YOUR_LINKUP_API_KEY")
+   retriever = LinkupRetriever(api_key="YOUR_LINKUP_API_KEY", ...)
    ...
    ```
 
