@@ -21,10 +21,12 @@ class LinkupRetriever(BaseRetriever):
     # langchain_core.load.Serializable. There's no real overhead in creating a new LinkupClient
     # instance for each query, so we don't need to do this at the moment.
 
+    depth: Literal["standard", "deep"]
+    """The depth of the search. Can be either "standard", for a straighforward and fast search, or
+    "deep" for a more powerful agentic workflow."""
     linkup_api_key: Optional[str] = None
-    """The API key for the Linkup API."""
-    depth: Literal["standard", "deep"] = "standard"
-    """The depth of the search. Can be either "standard" or "deep"."""
+    """The API key for the Linkup API. If None, the API key will be read from the environment
+    variable `LINKUP_API_KEY`."""
 
     def _get_relevant_documents(
         self,
