@@ -28,5 +28,7 @@ jobs:
           make install-dev
 
       - name: Run tests
+        env:
+          LINKUP_API_KEY: ${{ secrets.LINKUP_API_KEY }}
         run: |
           make test
