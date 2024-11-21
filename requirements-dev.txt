@@ -6,5 +6,6 @@ pytest
 pytest-asyncio
 pytest-cov
 pytest-mock
+pytest-socket
 setuptools
 types-setuptools
