@@ -12,5 +12,5 @@ test:
 	mypy .
 	# Follow the test practices recommanded by LangChain (v0.3)
 	# See https://python.langchain.com/docs/contributing/how_to/integrations/standard_tests/
-	pytest --cov=langchain-linkup/ --cov-report term-missing --disable-socket --allow-unix-socket tests/unit_tests
+	pytest --cov=langchain_linkup/ --cov-report term-missing --disable-socket --allow-unix-socket tests/unit_tests
 	pytest tests/integration_tests
