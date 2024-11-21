@@ -9,7 +9,7 @@ from langchain_linkup import LinkupRetriever
 # need to implement tests manually
 
 
-def test_get_relevant_document(mocker: MockerFixture) -> None:
+def test_get_relevant_document(mocker: MockerFixture, linkup_api_key: str) -> None:
     mocker.patch(
         "linkup.client.LinkupClient._request",
         return_value=Response(
@@ -34,7 +34,7 @@ def test_get_relevant_document(mocker: MockerFixture) -> None:
         ),
     )
 
-    retriever = LinkupRetriever(linkup_api_key="api-key", depth="standard")
+    retriever = LinkupRetriever(linkup_api_key=linkup_api_key, depth="standard")
     documents: list[Document] = retriever.invoke(input="What is Linkup, the new French AI startup?")
 
     assert len(documents) == 2
@@ -57,7 +57,7 @@ def test_get_relevant_document(mocker: MockerFixture) -> None:
 
 
 @pytest.mark.asyncio
-async def test_aget_relevant_documents(mocker: MockerFixture) -> None:
+async def test_aget_relevant_documents(mocker: MockerFixture, linkup_api_key: str) -> None:
     mocker.patch(
         "linkup.client.LinkupClient._async_request",
         return_value=Response(
@@ -82,7 +82,7 @@ async def test_aget_relevant_documents(mocker: MockerFixture) -> None:
         ),
     )
 
-    retriever = LinkupRetriever(linkup_api_key="api-key", depth="standard")
+    retriever = LinkupRetriever(linkup_api_key=linkup_api_key, depth="standard")
     documents: list[Document] = await retriever.ainvoke(
         input="What is Linkup, the new French AI startup?"
     )
