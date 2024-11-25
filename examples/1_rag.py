@@ -26,11 +26,10 @@ from langchain_linkup import LinkupRetriever
 query: str = "What is Linkup, the new French AI startup?"
 linkup_depth: Literal["standard", "deep"] = "standard"
 linkup_api_key = None
-open_ai_model: str = "gpt-4o-mini"
+openai_model: str = "gpt-4o-mini"
 openai_api_key = None
 
 load_dotenv()  # Load environment variables from .env file if there is one
-
 
 retriever = LinkupRetriever(linkup_api_key=linkup_api_key, depth=linkup_depth)
 
@@ -59,7 +58,7 @@ generation_prompt_template = """Answer the question based only on the following 
 Question: {question}
 """
 prompt = ChatPromptTemplate.from_template(generation_prompt_template)
-model = ChatOpenAI(model=open_ai_model, api_key=openai_api_key)
+model = ChatOpenAI(model=openai_model, api_key=openai_api_key)
 
 
 chain: Runnable[Any, str] = (

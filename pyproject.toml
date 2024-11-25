@@ -4,6 +4,7 @@ strict = true
 
 [tool.pytest.ini_options]
 asyncio_default_fixture_loop_scope = "function"
+asyncio_mode = "auto" # Prevent some async tests in langchain-tests to be skipped
 
 [tool.coverage.report]
 exclude_also = ["raise ValueError", "raise TypeError"]

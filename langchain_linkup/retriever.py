@@ -16,11 +16,6 @@ class LinkupRetriever(BaseRetriever):
     the Linkup API sources, that is the web and the Linkup Premium Partner sources.
     """
 
-    # NOTE: we could want to make the LinkupClient a class attribute, but we would need to make it
-    # serializable for this to work, as langchain_core.retrievers.BaseRetriever inherits from
-    # langchain_core.load.Serializable. There's no real overhead in creating a new LinkupClient
-    # instance for each query, so we don't need to do this at the moment.
-
     depth: Literal["standard", "deep"]
     """The depth of the search. Can be either "standard", for a straighforward and fast search, or
     "deep" for a more powerful agentic workflow."""
