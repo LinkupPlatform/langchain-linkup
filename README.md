@@ -75,6 +75,10 @@ All search queries can be used with two very different modes:
 
 ### 🔍 Retriever
 
+A retriever is a LangChain component which simply retrieves documents based on a query. It is
+typically the first step of a RAG (Retrival Augmented Generation) pipeline. See
+[this page](https://python.langchain.com/docs/concepts/retrievers/) for more information.
+
 ```python
 from langchain_linkup import LinkupRetriever
 
@@ -89,7 +93,29 @@ documents = retriever.invoke(input="What is Linkup, the new French AI startup?")
 print(documents)
 ```
 
+### ⚒️ Tool
+
+A tool is a LangChain component which enables agents to perform a specific task, like a web search.
+Tools are designed to be called autonomously by the agent, and their output is fed back to the
+agent, allowing them to perform some kind of reasoning based on the tool usage. See
+[this page](https://python.langchain.com/docs/integrations/tools/) for more information.
+
+```python
+from langchain_linkup import LinkupTool
+
+# Initialize the LangChain component (API key can be read from the environment variable or passed as
+# an argument)
+tool = LinkupTool(
+    depth="deep",  # "standard" or "deep"
+    output_type="searchResults",  # "searchResults", "sourcedAnswer" or "structured"
+)
+
+# Perform a search query
+search_results = tool.invoke(input="What is Linkup, the new French AI startup?")
+print(search_results)
+```
+
 ### 📚 More Examples
 
-See the `examples/` directory for more examples and documentation, for instance on how to use the
-Linkup retriever in a simple RAG pipeline.
+See the `examples/` directory for more contextualized examples and documentation, for instance on
+how to use the Linkup retriever in a simple RAG pipeline.
