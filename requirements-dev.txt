@@ -1,4 +1,6 @@
 langchain-openai
+langchain-tests==0.3.4
+langgraph
 load-dotenv
 mypy
 pre-commit
