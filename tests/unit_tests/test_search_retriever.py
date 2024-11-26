@@ -3,7 +3,7 @@ from httpx import Response
 from langchain_core.documents import Document
 from pytest_mock import MockerFixture
 
-from langchain_linkup import LinkupRetriever
+from langchain_linkup import LinkupSearchRetriever
 
 # NOTE: there is no retriever integration in langchain-tests to this date (version 0.3.4), so we
 # need to implement tests manually
@@ -34,7 +34,7 @@ def test_get_relevant_document(mocker: MockerFixture, linkup_api_key: str) -> No
         ),
     )
 
-    retriever = LinkupRetriever(linkup_api_key=linkup_api_key, depth="standard")
+    retriever = LinkupSearchRetriever(linkup_api_key=linkup_api_key, depth="standard")
     documents: list[Document] = retriever.invoke(input="What is Linkup, the new French AI startup?")
 
     assert len(documents) == 2
@@ -82,7 +82,7 @@ async def test_aget_relevant_documents(mocker: MockerFixture, linkup_api_key: st
         ),
     )
 
-    retriever = LinkupRetriever(linkup_api_key=linkup_api_key, depth="standard")
+    retriever = LinkupSearchRetriever(linkup_api_key=linkup_api_key, depth="standard")
     documents: list[Document] = await retriever.ainvoke(
         input="What is Linkup, the new French AI startup?"
     )

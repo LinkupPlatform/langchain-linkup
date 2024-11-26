@@ -4,13 +4,13 @@ from typing import Any, Optional, Type
 from dotenv import load_dotenv
 from langchain_tests.integration_tests import ToolsIntegrationTests
 
-from langchain_linkup import LinkupTool
+from langchain_linkup import LinkupSearchTool
 
 
-class TestLinkupToolIntegration(ToolsIntegrationTests):
+class TestLinkupSearchToolIntegration(ToolsIntegrationTests):
     @property
-    def tool_constructor(self) -> Type[LinkupTool]:
-        return LinkupTool
+    def tool_constructor(self) -> Type[LinkupSearchTool]:
+        return LinkupSearchTool
 
     @property
     def tool_constructor_params(self) -> dict[str, Any]:

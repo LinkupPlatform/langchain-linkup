@@ -2,13 +2,13 @@ from typing import Any, Type
 
 from langchain_tests.unit_tests import ToolsUnitTests
 
-from langchain_linkup import LinkupTool
+from langchain_linkup import LinkupSearchTool
 
 
-class TestLinkupToolUnit(ToolsUnitTests):
+class TestLinkupSearchToolUnit(ToolsUnitTests):
     @property
-    def tool_constructor(self) -> Type[LinkupTool]:
-        return LinkupTool
+    def tool_constructor(self) -> Type[LinkupSearchTool]:
+        return LinkupSearchTool
 
     @property
     def tool_constructor_params(self) -> dict[str, Any]:
