@@ -7,10 +7,10 @@ For this example to work, you need few additional dependencies, all specified in
 `requirements-dev.txt` file (you can run `pip install -r requirements-dev.txt` to install them).
 
 Additionally, you need an API key for Linkup, and another one for OpenAI (for the base agent model),
-which you can set manually as the LINKUP_API_KEY and OPENAI_API_KEY environment variables, or you
-can duplicate the file `.env.example` in a `.env` file, fill the missing values, and the environment
-variables will be automatically loaded from it, or you can replace the corresponding variables
-below.
+which you can set manually as the `LINKUP_API_KEY` and `OPENAI_API_KEY` environment variables, or
+you can duplicate the file `.env.example` in a `.env` file, fill the missing values, and the
+environment variables will be automatically loaded from it, or you can replace the corresponding
+variables below.
 """
 
 from typing import Literal
@@ -20,7 +20,7 @@ from langchain_core.messages import HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import create_react_agent
 
-from langchain_linkup import LinkupTool
+from langchain_linkup import LinkupSearchTool
 
 # You can change the RAG query and parameters here. If you prefer not to use environment variables
 # you can fill them here.
@@ -33,7 +33,7 @@ openai_api_key = None
 load_dotenv()  # Load environment variables from .env file if there is one
 
 model = ChatOpenAI(model=openai_model, api_key=openai_api_key)
-search_tool = LinkupTool(depth="standard", output_type="searchResults")
+search_tool = LinkupSearchTool(depth="standard", output_type="searchResults")
 agent_executor = create_react_agent(model=model, tools=[search_tool])
 
 # Use the agent

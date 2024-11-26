@@ -9,11 +9,12 @@ from langchain_core.retrievers import BaseRetriever
 from linkup import LinkupClient, LinkupSearchResults
 
 
-class LinkupRetriever(BaseRetriever):
-    """A retriever which using the Linkup API to retrieve documents.
+class LinkupSearchRetriever(BaseRetriever):
+    """A retriever using the Linkup API search to retrieve documents using natural language.
 
-    This retriever is a wrapper around the Linkup API, allowing you to search for documents from
-    the Linkup API sources, that is the web and the Linkup Premium Partner sources.
+    This retriever is a wrapper around the Linkup API search entrypoint, making possible to
+    retrieve documents from the Linkup API sources, that is the web and the Linkup Premium Partner
+    sources, using natural language.
     """
 
     depth: Literal["standard", "deep"]

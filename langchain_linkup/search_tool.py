@@ -9,15 +9,16 @@ from linkup import LinkupClient
 from pydantic import BaseModel, Field
 
 
-class LinkupInput(BaseModel):
-    query: str = Field(description="The search query.")
+class LinkupSearchInput(BaseModel):
+    query: str = Field(description="The query for the Linkup API search.")
 
 
-class LinkupTool(BaseTool):
-    """A tool to query the Linkup API in agentic workflows.
+class LinkupSearchTool(BaseTool):
+    """A tool to query the Linkup API search in natural language.
 
-    This tool is a wrapper around the Linkup API, allowing you to search for documents from the
-    Linkup API sources, that is the web and the Linkup Premium Partner sources.
+    This tool is a wrapper around the Linkup API search entrypoint, making possible to perform
+    search queries based on the Linkup API sources, that is the web and the Linkup Premium Partner
+    sources, using natural language.
     """
 
     depth: Literal["standard", "deep"]
@@ -39,10 +40,10 @@ class LinkupTool(BaseTool):
     # Fields used by the agent to describe how to use the tool under the hood
     name: str = "linkup"
     description: str = (
-        "A tool to search for information using the Linkup API, that is from the "
-        "web and Linkup Premium Partner sources. "
+        "A tool to perform search queries based on the Linkup API sources, that is the web and the "
+        "Linkup Premium Partner sources, using natural language."
     )
-    args_schema: Type[BaseModel] = LinkupInput
+    args_schema: Type[BaseModel] = LinkupSearchInput
     return_direct: bool = False
 
     def _run(

@@ -4,10 +4,10 @@ For this example to work, you need few additional dependencies, all specified in
 `requirements-dev.txt` file (you can run `pip install -r requirements-dev.txt` to install them).
 
 Additionally, you need an API key for Linkup, and another one for OpenAI (for the final generation),
-which you can set manually as the LINKUP_API_KEY and OPENAI_API_KEY environment variables, or you
-can duplicate the file `.env.example` in a `.env` file, fill the missing values, and the environment
-variables will be automatically loaded from it, or you can replace the corresponding variables
-below.
+which you can set manually as the `LINKUP_API_KEY` and `OPENAI_API_KEY` environment variables, or
+you can duplicate the file `.env.example` in a `.env` file, fill the missing values, and the
+environment variables will be automatically loaded from it, or you can replace the corresponding
+variables below.
 """
 
 from typing import Any, Literal
@@ -19,7 +19,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable, RunnableLambda, RunnablePassthrough
 from langchain_openai import ChatOpenAI
 
-from langchain_linkup import LinkupRetriever
+from langchain_linkup import LinkupSearchRetriever
 
 # You can change the RAG query and parameters here. If you prefer not to use environment variables
 # you can fill them here.
@@ -31,7 +31,7 @@ openai_api_key = None
 
 load_dotenv()  # Load environment variables from .env file if there is one
 
-retriever = LinkupRetriever(linkup_api_key=linkup_api_key, depth=linkup_depth)
+retriever = LinkupSearchRetriever(linkup_api_key=linkup_api_key, depth=linkup_depth)
 
 
 def format_retrieved_documents(docs: list[Document]) -> str:
