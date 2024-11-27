@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="langchain-linkup",
-    version="0.1.2",
+    version="0.1.3",
     author="LINKUP TECHNOLOGIES",
     author_email="contact@linkup.so",
     description="A Langchain integration for the Linkup API",
