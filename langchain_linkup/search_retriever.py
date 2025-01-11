@@ -1,4 +1,4 @@
-from typing import Literal, Optional
+from typing import Literal, Optional, cast
 
 from langchain_core.callbacks import (
     AsyncCallbackManagerForRetrieverRun,
@@ -6,7 +6,7 @@ from langchain_core.callbacks import (
 )
 from langchain_core.documents import Document
 from langchain_core.retrievers import BaseRetriever
-from linkup import LinkupClient, LinkupSearchResults
+from linkup import LinkupClient, LinkupSearchResults, LinkupSearchTextResult
 
 
 class LinkupSearchRetriever(BaseRetriever):
@@ -129,11 +129,12 @@ class LinkupSearchRetriever(BaseRetriever):
             query=query,
             depth=self.depth,
             output_type="searchResults",
+            include_images=False,
         )
 
         return [
             Document(
-                page_content=result.content,
+                page_content=cast(LinkupSearchTextResult, result).content,
                 metadata=dict(
                     name=result.name,
                     url=result.url,
@@ -153,11 +154,12 @@ class LinkupSearchRetriever(BaseRetriever):
             query=query,
             depth=self.depth,
             output_type="searchResults",
+            include_images=False,
         )
 
         return [
             Document(
-                page_content=result.content,
+                page_content=cast(LinkupSearchTextResult, result).content,
                 metadata=dict(
                     name=result.name,
                     url=result.url,
