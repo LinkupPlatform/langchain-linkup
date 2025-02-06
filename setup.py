@@ -31,6 +31,6 @@ setup(
     python_requires=">=3.9,<4.0",  # Like langchain
     install_requires=[
         "langchain-core",
-        "linkup-sdk>=0.2.2",
+        "linkup-sdk>=0.2.3",
     ],
 )
