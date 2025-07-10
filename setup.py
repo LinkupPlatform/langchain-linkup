@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="langchain-linkup",
-    version="0.1.5",
+    version="0.1.6",
     author="LINKUP TECHNOLOGIES",
     author_email="contact@linkup.so",
     description="A Langchain integration for the Linkup API",
@@ -31,6 +31,6 @@ setup(
     python_requires=">=3.9,<4.0",  # Like langchain
     install_requires=[
         "langchain-core",
-        "linkup-sdk>=0.2.3",
+        "linkup-sdk>=0.2.8",
     ],
 )
