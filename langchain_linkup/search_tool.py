@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Any, Literal, Optional, Type, Union
 
 from langchain_core.callbacks import (
@@ -43,6 +44,14 @@ class LinkupSearchTool(BaseTool):
         structured_output_schema: Union[Type[BaseModel], str, None] = None
             If output_type is "structured", specify the schema of the output. Supported formats are
             a pydantic.BaseModel or a string representing a valid object JSON schema.
+        from_date: Optional[date] = None
+            The start date for the search in ISO 8601 format (YYYY-MM-DD), e.g. "2025-01-01".
+        to_date: Optional[date] = None
+            The end date for the search in ISO 8601 format (YYYY-MM-DD), e.g. "2025-12-31".
+        include_domains: Optional[list[str]] = None
+            The list of domains to search on (only those domains).
+        exclude_domains: Optional[list[str]] = None
+            The list of domains to exclude from the search.
 
     Instantiate:
         .. code-block:: python
@@ -54,6 +63,10 @@ class LinkupSearchTool(BaseTool):
                 output_type="sourcedAnswer",  # "searchResults", "sourcedAnswer" or "structured"
                 linkup_api_key=None,
                 structured_output_schema=None,
+                from_date=None,
+                to_date=None,
+                include_domains=None,
+                exclude_domains=None,
             )
 
     Usage:
@@ -120,6 +133,16 @@ class LinkupSearchTool(BaseTool):
     """If output_type is "structured", specify the schema of the
     output. Supported formats are a pydantic.BaseModel or a string representing a
     valid object JSON schema."""
+    from_date: Optional[date] = None
+    """Only include search results published **from** this date
+    in ISO 8601 format (YYYY-MM-DD), e.g. "2025-01-01."""
+    to_date: Optional[date] = None
+    """Only include search results published **before** this date
+    in ISO 8601 format (YYYY-MM-DD), e.g. "2025-12-31"""
+    include_domains: Optional[list[str]] = None
+    """The list of domains to search on (only those domains)."""
+    exclude_domains: Optional[list[str]] = None
+    """The list of domains to exclude from the search."""
 
     # Fields used by the agent to describe how to use the tool under the hood
     name: str = "linkup"
@@ -141,6 +164,10 @@ class LinkupSearchTool(BaseTool):
             depth=self.depth,
             output_type=self.output_type,
             structured_output_schema=self.structured_output_schema,
+            from_date=self.from_date,
+            to_date=self.to_date,
+            include_domains=self.include_domains,
+            exclude_domains=self.exclude_domains,
         )
 
     async def _arun(
@@ -154,4 +181,8 @@ class LinkupSearchTool(BaseTool):
             depth=self.depth,
             output_type=self.output_type,
             structured_output_schema=self.structured_output_schema,
+            from_date=self.from_date,
+            to_date=self.to_date,
+            include_domains=self.include_domains,
+            exclude_domains=self.exclude_domains,
         )
