@@ -88,10 +88,3 @@ build_command = """
     git add uv.lock
     uv build
 """
-[tool.semantic_release.release_branch]
-name = "main"
-prerelease = false
-
-[tool.semantic_release.branches]
-main = { prerelease = false }
-"feat/add_semantic_release" = { prerelease = true }
