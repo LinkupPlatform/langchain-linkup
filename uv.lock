@@ -535,7 +535,7 @@ wheels = [
 [[package]]
 name = "langchain-linkup"
 version = "0.1.6"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "langchain-core" },
     { name = "linkup-sdk" },

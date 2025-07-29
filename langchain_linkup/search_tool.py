@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Any, Literal, Optional, Type, Union
 
 from langchain_core.callbacks import (
@@ -7,7 +8,7 @@ from langchain_core.callbacks import (
 from langchain_core.tools import BaseTool
 from linkup import LinkupClient
 from pydantic import BaseModel, Field
-from datetime import date
+
 
 class LinkupSearchInput(BaseModel):
     query: str = Field(description="The query for the Linkup API search.")
@@ -133,9 +134,11 @@ class LinkupSearchTool(BaseTool):
     output. Supported formats are a pydantic.BaseModel or a string representing a
     valid object JSON schema."""
     from_date: Optional[date] = None
-    """Only include search results published **from** this date in ISO 8601 format (YYYY-MM-DD), e.g. "2025-01-01."""
+    """Only include search results published **from** this date
+    in ISO 8601 format (YYYY-MM-DD), e.g. "2025-01-01."""
     to_date: Optional[date] = None
-    """Only include search results published **before** this date in ISO 8601 format (YYYY-MM-DD), e.g. "2025-12-31"""
+    """Only include search results published **before** this date
+    in ISO 8601 format (YYYY-MM-DD), e.g. "2025-12-31"""
     include_domains: Optional[list[str]] = None
     """The list of domains to search on (only those domains)."""
     exclude_domains: Optional[list[str]] = None
