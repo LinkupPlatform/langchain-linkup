@@ -1,3 +1,46 @@
+[project]
+name="langchain-linkup"
+version="0.1.6"
+description = "A Langchain integration for the Linkup API"
+readme = "README.md"
+keywords = ["linkup", "api", "langchain", "integration", "search", "retriever"]
+license = "MIT"
+requires-python = ">=3.9,<4.0"
+classifiers = [
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "langchain-core",
+  "linkup-sdk>=0.2.8",
+]
+
+[dependency-groups]
+dev = [
+  "langchain-openai",
+  "langchain-tests==0.3.4",
+  "langgraph",
+  "load-dotenv",
+  "mypy",
+  "pre-commit",
+  "pytest",
+  "pytest-asyncio",
+  "pytest-cov",
+  "pytest-mock",
+  "pytest-socket",
+  "setuptools",
+  "types-setuptools"
+]
+
+[project.urls]
+Homepage = "https://github.com/LinkupPlatform/langchain-linkup"
+Documentation = "https://github.com/LinkupPlatform/langchain-linkup#readme"
+Source = "https://github.com/LinkupPlatform/langchain-linkup"
+Tracker = "https://github.com/LinkupPlatform/langchain-linkup/issues"
+
 [tool.mypy]
 exclude = ['^tests/']
 strict = true
@@ -20,6 +63,10 @@ select = [
   "I", # isort
   "S", # flake8-bandit
 ]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.ruff.lint.extend-per-file-ignores]
 "tests/**/test_*.py" = ["S101"] # Use of assert detected
