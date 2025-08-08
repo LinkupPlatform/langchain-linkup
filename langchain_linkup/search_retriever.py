@@ -1,3 +1,4 @@
+from datetime import date
 from typing import Literal, Optional, cast
 
 from langchain_core.callbacks import (
@@ -31,6 +32,18 @@ class LinkupSearchRetriever(BaseRetriever):
         linkup_api_key: Optional[str] = None
             The API key for the Linkup API. If None (the default), the API key will be read from
             the environment variable `LINKUP_API_KEY`.
+        from_date: Optional[date] = None
+            The start date for the search
+            in datetime.date object, e.g. date(2025, 01, 01).
+        to_date: Optional[date] = None
+            The end date for the search
+            in datetime.date object, e.g. date(2025, 01, 01).
+        include_domains: Optional[list[str]] = None
+            The list of domains to search on (only those domains).
+        exclude_domains: Optional[list[str]] = None
+            The list of domains to exclude from the search.
+        include_image: bool = False
+            If set to True, image results will be included alongside text results.
 
 
     Instantiate:
@@ -117,6 +130,18 @@ class LinkupSearchRetriever(BaseRetriever):
     linkup_api_key: Optional[str] = None
     """The API key for the Linkup API. If None, the API key will be read from the environment
     variable `LINKUP_API_KEY`."""
+    from_date: Optional[date] = None
+    """The start date for the search
+    in datetime.date object, e.g. date(2025, 01, 01)."""
+    to_date: Optional[date] = None
+    """The end date for the search
+    in datetime.date object, e.g. date(2025, 01, 01)."""
+    include_domains: Optional[list[str]] = None
+    """The list of domains to search on (only those domains)."""
+    exclude_domains: Optional[list[str]] = None
+    """The list of domains to exclude from the search."""
+    include_image: bool = False
+    """If set to True, image results will be included alongside text results."""
 
     def _get_relevant_documents(
         self,
@@ -129,7 +154,11 @@ class LinkupSearchRetriever(BaseRetriever):
             query=query,
             depth=self.depth,
             output_type="searchResults",
-            include_images=False,
+            include_images=self.include_image,
+            from_date=self.from_date,
+            to_date=self.to_date,
+            include_domains=self.include_domains,
+            exclude_domains=self.exclude_domains,
         )
 
         return [
@@ -154,7 +183,11 @@ class LinkupSearchRetriever(BaseRetriever):
             query=query,
             depth=self.depth,
             output_type="searchResults",
-            include_images=False,
+            include_images=self.include_image,
+            from_date=self.from_date,
+            to_date=self.to_date,
+            include_domains=self.include_domains,
+            exclude_domains=self.exclude_domains,
         )
 
         return [
