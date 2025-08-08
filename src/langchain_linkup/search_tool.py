@@ -1,9 +1,7 @@
+from datetime import date
 from typing import Any, Literal, Optional, Type, Union
 
-from langchain_core.callbacks import (
-    AsyncCallbackManagerForToolRun,
-    CallbackManagerForToolRun,
-)
+from langchain_core.callbacks import AsyncCallbackManagerForToolRun, CallbackManagerForToolRun
 from langchain_core.tools import BaseTool
 from linkup import LinkupClient
 from pydantic import BaseModel, Field
@@ -43,6 +41,16 @@ class LinkupSearchTool(BaseTool):
         structured_output_schema: Union[Type[BaseModel], str, None] = None
             If output_type is "structured", specify the schema of the output. Supported formats are
             a pydantic.BaseModel or a string representing a valid object JSON schema.
+        from_date: Optional[date] = None
+            The start date for the search in datetime.date object.
+        to_date: Optional[date] = None
+            The end date for the search in datetime.date object.
+        include_domains: Optional[list[str]] = None
+            The list of domains to search on (only those domains).
+        exclude_domains: Optional[list[str]] = None
+            The list of domains to exclude from the search.
+        include_image: bool = False
+            If set to True, image results will be included alongside text results.
 
     Instantiate:
         .. code-block:: python
@@ -54,6 +62,11 @@ class LinkupSearchTool(BaseTool):
                 output_type="sourcedAnswer",  # "searchResults", "sourcedAnswer" or "structured"
                 linkup_api_key=None,
                 structured_output_schema=None,
+                from_date=None,
+                to_date=None,
+                include_domains=None,
+                exclude_domains=None,
+                include_image=False,
             )
 
     Usage:
@@ -120,6 +133,16 @@ class LinkupSearchTool(BaseTool):
     """If output_type is "structured", specify the schema of the
     output. Supported formats are a pydantic.BaseModel or a string representing a
     valid object JSON schema."""
+    from_date: Optional[date] = None
+    """Only include search results published **from** in datetime.date object."""
+    to_date: Optional[date] = None
+    """Only include search results published **before** in datetime.date object."""
+    include_domains: Optional[list[str]] = None
+    """The list of domains to search on (only those domains)."""
+    exclude_domains: Optional[list[str]] = None
+    """The list of domains to exclude from the search."""
+    include_image: bool = False
+    """If set to True, image results will be included alongside text results."""
 
     # Fields used by the agent to describe how to use the tool under the hood
     name: str = "linkup"
@@ -141,6 +164,11 @@ class LinkupSearchTool(BaseTool):
             depth=self.depth,
             output_type=self.output_type,
             structured_output_schema=self.structured_output_schema,
+            from_date=self.from_date,
+            to_date=self.to_date,
+            include_domains=self.include_domains,
+            exclude_domains=self.exclude_domains,
+            include_images=self.include_image,
         )
 
     async def _arun(
@@ -154,4 +182,9 @@ class LinkupSearchTool(BaseTool):
             depth=self.depth,
             output_type=self.output_type,
             structured_output_schema=self.structured_output_schema,
+            from_date=self.from_date,
+            to_date=self.to_date,
+            include_domains=self.include_domains,
+            exclude_domains=self.exclude_domains,
+            include_images=self.include_image,
         )
