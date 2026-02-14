@@ -42,6 +42,8 @@ class LinkupSearchRetriever(BaseRetriever):
             The list of domains to exclude from the search.
         include_image: bool = False
             If set to True, image results will be included alongside text results.
+        max_results: Optional[int] = None
+            The maximum number of search results to return.
 
     Instantiate:
         .. code-block:: python
@@ -137,6 +139,8 @@ class LinkupSearchRetriever(BaseRetriever):
     """The list of domains to exclude from the search."""
     include_image: bool = False
     """If set to True, image results will be included alongside text results."""
+    max_results: Optional[int] = None
+    """The maximum number of search results to return."""
 
     def _get_relevant_documents(
         self,
@@ -154,6 +158,7 @@ class LinkupSearchRetriever(BaseRetriever):
             include_domains=self.include_domains,
             exclude_domains=self.exclude_domains,
             include_images=self.include_image,
+            max_results=self.max_results,
         )
 
         return [
@@ -183,6 +188,7 @@ class LinkupSearchRetriever(BaseRetriever):
             include_domains=self.include_domains,
             exclude_domains=self.exclude_domains,
             include_images=self.include_image,
+            max_results=self.max_results,
         )
 
         return [
