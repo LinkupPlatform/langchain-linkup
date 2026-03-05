@@ -5,7 +5,7 @@ description = "A Langchain integration for the Linkup API"
 readme = "README.md"
 keywords = ["linkup", "api", "langchain", "integration", "search", "retriever"]
 license = "MIT"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10,<4.0"
 authors = [
   { name = "LINKUP TECHNOLOGIES", email = "contact@linkup.so" }
 ]
@@ -57,7 +57,7 @@ exclude_also = ["raise ValueError", "raise TypeError"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [
