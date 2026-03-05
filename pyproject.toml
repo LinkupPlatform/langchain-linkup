@@ -27,7 +27,7 @@ build = ["uv>=0.10.0,<0.11.0"] # For python-semantic-release build command, used
 [dependency-groups]
 dev = [
   "langchain-openai",
-  "langchain-tests==0.3.4",
+  "langchain-tests",
   "langgraph",
   "load-dotenv",
   "mypy",
