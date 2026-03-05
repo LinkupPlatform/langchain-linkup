@@ -51,6 +51,17 @@ class LinkupSearchTool(BaseTool):
             The list of domains to exclude from the search.
         include_image: bool = False
             If set to True, image results will be included alongside text results.
+        max_results: Optional[int] = None
+            The maximum number of results to return.
+        include_inline_citations: Optional[bool] = None
+            If output_type is "sourcedAnswer", indicate whether the answer should include inline
+            citations.
+        include_sources: Optional[bool] = None
+            If output_type is "structured", indicate whether the answer should include sources.
+            This will modify the schema of the structured response.
+        timeout: Optional[float] = None
+            The timeout for the HTTP request, in seconds. If None, the request will have
+            no timeout.
 
     Instantiate:
         .. code-block:: python
@@ -67,6 +78,10 @@ class LinkupSearchTool(BaseTool):
                 include_domains=None,
                 exclude_domains=None,
                 include_image=False,
+                max_results=None,
+                include_inline_citations=None,
+                include_sources=None,
+                timeout=None,
             )
 
     Usage:
@@ -143,6 +158,16 @@ class LinkupSearchTool(BaseTool):
     """The list of domains to exclude from the search."""
     include_image: bool = False
     """If set to True, image results will be included alongside text results."""
+    max_results: Optional[int] = None
+    """The maximum number of results to return."""
+    include_inline_citations: Optional[bool] = None
+    """If output_type is "sourcedAnswer", indicate whether the answer should include inline
+    citations."""
+    include_sources: Optional[bool] = None
+    """If output_type is "structured", indicate whether the answer should include sources. This
+    will modify the schema of the structured response."""
+    timeout: Optional[float] = None
+    """The timeout for the HTTP request, in seconds. If None, the request will have no timeout."""
 
     # Fields used by the agent to describe how to use the tool under the hood
     name: str = "linkup"
@@ -169,6 +194,10 @@ class LinkupSearchTool(BaseTool):
             include_domains=self.include_domains,
             exclude_domains=self.exclude_domains,
             include_images=self.include_image,
+            max_results=self.max_results,
+            include_inline_citations=self.include_inline_citations,
+            include_sources=self.include_sources,
+            timeout=self.timeout,
         )
 
     async def _arun(
@@ -187,4 +216,8 @@ class LinkupSearchTool(BaseTool):
             include_domains=self.include_domains,
             exclude_domains=self.exclude_domains,
             include_images=self.include_image,
+            max_results=self.max_results,
+            include_inline_citations=self.include_inline_citations,
+            include_sources=self.include_sources,
+            timeout=self.timeout,
         )

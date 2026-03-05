@@ -42,6 +42,17 @@ class LinkupSearchRetriever(BaseRetriever):
             The list of domains to exclude from the search.
         include_image: bool = False
             If set to True, image results will be included alongside text results.
+        max_results: Optional[int] = None
+            The maximum number of results to return.
+        include_inline_citations: Optional[bool] = None
+            If output_type is "sourcedAnswer", indicate whether the answer should include inline
+            citations.
+        include_sources: Optional[bool] = None
+            If output_type is "structured", indicate whether the answer should include sources.
+            This will modify the schema of the structured response.
+        timeout: Optional[float] = None
+            The timeout for the HTTP request, in seconds. If None, the request will have
+            no timeout.
 
     Instantiate:
         .. code-block:: python
@@ -137,6 +148,16 @@ class LinkupSearchRetriever(BaseRetriever):
     """The list of domains to exclude from the search."""
     include_image: bool = False
     """If set to True, image results will be included alongside text results."""
+    max_results: Optional[int] = None
+    """The maximum number of results to return."""
+    include_inline_citations: Optional[bool] = None
+    """If output_type is "sourcedAnswer", indicate whether the answer should include inline
+    citations."""
+    include_sources: Optional[bool] = None
+    """If output_type is "structured", indicate whether the answer should include sources. This
+    will modify the schema of the structured response."""
+    timeout: Optional[float] = None
+    """The timeout for the HTTP request, in seconds. If None, the request will have no timeout."""
 
     def _get_relevant_documents(
         self,
@@ -154,6 +175,10 @@ class LinkupSearchRetriever(BaseRetriever):
             include_domains=self.include_domains,
             exclude_domains=self.exclude_domains,
             include_images=self.include_image,
+            max_results=self.max_results,
+            include_inline_citations=self.include_inline_citations,
+            include_sources=self.include_sources,
+            timeout=self.timeout,
         )
 
         return [
@@ -183,6 +208,10 @@ class LinkupSearchRetriever(BaseRetriever):
             include_domains=self.include_domains,
             exclude_domains=self.exclude_domains,
             include_images=self.include_image,
+            max_results=self.max_results,
+            include_inline_citations=self.include_inline_citations,
+            include_sources=self.include_sources,
+            timeout=self.timeout,
         )
 
         return [
