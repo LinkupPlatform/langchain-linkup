@@ -6,7 +6,9 @@ repos:
       - id: check-merge-conflict
       - id: detect-private-key
       - id: end-of-file-fixer
+        exclude: CHANGELOG.md
       - id: trailing-whitespace
+        exclude: CHANGELOG.md
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.8.0
