@@ -11,7 +11,7 @@ from langchain_linkup import LinkupSearchRetriever
 
 def test_get_relevant_document(mocker: MockerFixture, linkup_api_key: str) -> None:
     mocker.patch(
-        "linkup.client.LinkupClient._request",
+        "linkup.LinkupClient._request",
         return_value=Response(
             status_code=200,
             content=b"""
@@ -41,7 +41,7 @@ def test_get_relevant_document(mocker: MockerFixture, linkup_api_key: str) -> No
 @pytest.mark.asyncio
 async def test_aget_relevant_documents(mocker: MockerFixture, linkup_api_key: str) -> None:
     mocker.patch(
-        "linkup.client.LinkupClient._async_request",
+        "linkup.LinkupClient._async_request",
         return_value=Response(
             status_code=200,
             content=b"""

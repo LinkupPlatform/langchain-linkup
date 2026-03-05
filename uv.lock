@@ -1,6 +1,10 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.9, <4.0"
+resolution-markers = [
+    "python_full_version >= '3.10'",
+    "python_full_version < '3.10'",
+]
 
 [[package]]
 name = "annotated-types"
@@ -534,11 +538,12 @@ wheels = [
 
 [[package]]
 name = "langchain-linkup"
-version = "0.1.6"
+version = "0.1.7"
 source = { editable = "." }
 dependencies = [
     { name = "langchain-core" },
-    { name = "linkup-sdk" },
+    { name = "linkup-sdk", version = "0.11.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "linkup-sdk", version = "0.13.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
 ]
 
 [package.dev-dependencies]
@@ -561,7 +566,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "langchain-core" },
-    { name = "linkup-sdk", specifier = ">=0.2.8" },
+    { name = "linkup-sdk", specifier = ">=0.11.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -686,15 +691,34 @@ wheels = [
 
 [[package]]
 name = "linkup-sdk"
-version = "0.2.8"
+version = "0.11.0"
 source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "httpx" },
-    { name = "pydantic" },
+resolution-markers = [
+    "python_full_version < '3.10'",
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9e/15/17f441d73d1dea76398980497bb8a3cce8a2b63dab42779610c04b6800d6/linkup_sdk-0.2.8.tar.gz", hash = "sha256:7ed45b76bb585ebf88d7bafa248e4907d116b19661880978b862c5f8b3b79686", size = 9905, upload-time = "2025-07-01T07:15:33.54Z" }
+dependencies = [
+    { name = "httpx", marker = "python_full_version < '3.10'" },
+    { name = "pydantic", marker = "python_full_version < '3.10'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fd/8a/b59dd620a3491f18dc14c8c740372a26ac9100e8ad392fb3e9be11fdc05a/linkup_sdk-0.11.0.tar.gz", hash = "sha256:f1fe3275d500e18095dd64a06ff16c42b4cdaf866c554a7ae9ca8473d723bec9", size = 61255, upload-time = "2026-02-13T10:49:14.449Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6c/a2/be93a8d93959e4e3756afa59c9312979ea641b90b7233acb4464a824f3c5/linkup_sdk-0.2.8-py3-none-any.whl", hash = "sha256:96acaf2c773963c21133b31d1ef18f5322ba07a34ef79c375fe75e44b9501cb6", size = 8729, upload-time = "2025-07-01T07:15:32.129Z" },
+    { url = "https://files.pythonhosted.org/packages/52/e1/42c4d1cba7a7bc46673064dbd3743363cf7cf40e403cce06f01f767004d8/linkup_sdk-0.11.0-py3-none-any.whl", hash = "sha256:f4bf45860d9883c58eaaaaabd06be7026f118468d2e098cba425fe6cf0fe95b7", size = 11455, upload-time = "2026-02-13T10:49:12.798Z" },
+]
+
+[[package]]
+name = "linkup-sdk"
+version = "0.13.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.10'",
+]
+dependencies = [
+    { name = "httpx", marker = "python_full_version >= '3.10'" },
+    { name = "pydantic", marker = "python_full_version >= '3.10'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/10/fa/d54d7086ceb8e8aa3777ae82f9876ceb7d15a6f583bbebf2fc2bea4cf69c/linkup_sdk-0.13.0.tar.gz", hash = "sha256:dab3f516bb955bdb9dd5815445bfdc7a2c9803dc57c3b4be4038d9e40f3d096a", size = 76440, upload-time = "2026-03-02T13:09:25.665Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/4c/b8/9a8be932db54dc673c0a2f033831e9963cb4395352ce5a54a423e2fb58de/linkup_sdk-0.13.0-py3-none-any.whl", hash = "sha256:d4f5f4698cbaf4711a3296473f6030613c9c8ac829c83172a51c34c6e653808a", size = 11750, upload-time = "2026-03-02T13:09:24.553Z" },
 ]
 
 [[package]]
