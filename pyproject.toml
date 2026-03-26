@@ -31,14 +31,14 @@ dev = [
   "langgraph",
   "load-dotenv",
   "mypy",
-  "pre-commit",
+  "prek>=0.3.5",
   "pytest",
   "pytest-asyncio",
   "pytest-cov",
   "pytest-mock",
   "pytest-socket",
   "setuptools",
-  "types-setuptools"
+  "types-setuptools",
 ]
 
 [project.urls]
