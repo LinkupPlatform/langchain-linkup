@@ -8,7 +8,7 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "2026-03-25T07:26:58.931738Z"
+exclude-newer = "2026-03-25T17:54:20.608661052Z"
 exclude-newer-span = "P5D"
 
 [[package]]
@@ -565,7 +565,7 @@ wheels = [
 
 [[package]]
 name = "langchain-linkup"
-version = "0.2.0"
+version = "0.2.1"
 source = { editable = "." }
 dependencies = [
     { name = "langchain-core" },

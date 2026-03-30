@@ -2,6 +2,28 @@
 
 <!-- version list -->
 
+## v0.2.1 (2026-03-30)
+
+### Bug Fixes
+
+- Bump langchain-core
+  ([`0c581af`](https://github.com/LinkupPlatform/langchain-linkup/commit/0c581afd4442936a77d0970b0a436cfa7d8b026a))
+
+### Chores
+
+- Format pyproject.toml with taplo
+  ([`e1bff7d`](https://github.com/LinkupPlatform/langchain-linkup/commit/e1bff7df4258e3eab4854e28c1459564d9a4d1b9))
+
+- Replace pre-commit with prek
+  ([`19f7e88`](https://github.com/LinkupPlatform/langchain-linkup/commit/19f7e88218f799b464888834711835b8b33bf5bc))
+
+- **uv**: Prevent install of too recent packages
+  ([`f991959`](https://github.com/LinkupPlatform/langchain-linkup/commit/f9919595a21f4be3423f0c570c68535c68e83ae6))
+
+- **uv**: Regenerate lock file
+  ([`d86332c`](https://github.com/LinkupPlatform/langchain-linkup/commit/d86332cf72d7aedde181df44b56b1bcd7aa432e9))
+
+
 ## v0.2.0 (2026-03-06)
 
 ### Chores
