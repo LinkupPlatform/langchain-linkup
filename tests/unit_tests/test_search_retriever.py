@@ -14,18 +14,17 @@ def test_get_relevant_document(mocker: MockerFixture, linkup_api_key: str) -> No
         "linkup.LinkupClient._request",
         return_value=Response(
             status_code=200,
-            content=b"""
-              {
+            json={
                 "results": [
-                  {
-                    "type": "text",
-                    "name": "foo",
-                    "url": "http://foo",
-                    "content": "foo"
-                  }
+                    {
+                        "type": "text",
+                        "name": "foo",
+                        "url": "http://foo",
+                        "favicon": "http://foo/favicon.ico",
+                        "content": "foo",
+                    }
                 ]
-              }
-            """,
+            },
         ),
     )
 
@@ -44,18 +43,17 @@ async def test_aget_relevant_documents(mocker: MockerFixture, linkup_api_key: st
         "linkup.LinkupClient._async_request",
         return_value=Response(
             status_code=200,
-            content=b"""
-              {
+            json={
                 "results": [
-                  {
-                    "type": "text",
-                    "name": "foo",
-                    "url": "http://foo",
-                    "content": "foo"
-                  }
+                    {
+                        "type": "text",
+                        "name": "foo",
+                        "url": "http://foo",
+                        "favicon": "http://foo/favicon.ico",
+                        "content": "foo",
+                    }
                 ]
-              }
-            """,
+            },
         ),
     )
 
