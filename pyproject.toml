@@ -91,6 +91,5 @@ version_toml = ["pyproject.toml:project.version"]
 parse_squash_commits = false
 
 [tool.uv]
-# TODO: put `exclude-newer` back to 2 weeks when possible
-exclude-newer = "5 days" # Reduce risks of supply chain attacks
+exclude-newer = "2 weeks" # Reduce risks of supply chain attacks
 required-version = ">=0.10.0,<0.11.0"
