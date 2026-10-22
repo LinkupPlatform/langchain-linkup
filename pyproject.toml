@@ -11,7 +11,7 @@ keywords = ["api", "integration", "langchain", "linkup", "retriever", "search"]
 license = "MIT"
 name = "langchain-linkup"
 readme = "README.md"
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.11,<4.0"
 version = "0.2.1"
 
 dependencies = ["langchain-core>=1.3.3", "linkup-sdk>=0.11.0"]
@@ -55,7 +55,7 @@ exclude_also = ["raise TypeError", "raise ValueError"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = [
