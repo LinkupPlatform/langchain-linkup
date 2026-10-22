@@ -2,6 +2,34 @@
 
 <!-- version list -->
 
+## v0.3.0 (2026-10-22)
+
+### Chores
+
+- Bump langchain-core to 1.3.3
+  ([`1149e98`](https://github.com/LinkupPlatform/langchain-linkup/commit/1149e98a682cc524ed6d664ac233f07b243d28d3))
+
+- Increase dependency cooldown duration
+  ([`3d01dd2`](https://github.com/LinkupPlatform/langchain-linkup/commit/3d01dd2ccc0f97222a738d2cb9455a84fc4302f6))
+
+- Upgrade lock file dependencies
+  ([`dd1c008`](https://github.com/LinkupPlatform/langchain-linkup/commit/dd1c0085c95d561f8d6adcf6ee877f3d677137c1))
+
+- **deps**: Bump GH actions
+  ([`b12cd6e`](https://github.com/LinkupPlatform/langchain-linkup/commit/b12cd6e3447b631e55413fa5cd0301d387f4299f))
+
+- **deps**: Bump or replace deps with vulnerabilities
+  ([`3872010`](https://github.com/LinkupPlatform/langchain-linkup/commit/3872010f8dd474929c703ceb676a456c700eeca0))
+
+- **python**: Drop 3.10
+  ([`67b6aa9`](https://github.com/LinkupPlatform/langchain-linkup/commit/67b6aa994cf8248d8dd939f24a9ee0e6ac1ce6a7))
+
+### Continuous Integration
+
+- Pin github actions to commit SHAs
+  ([`4af862e`](https://github.com/LinkupPlatform/langchain-linkup/commit/4af862e1a514df9be3f418940d11b61f4809a6f9))
+
+
 ## v0.2.1 (2026-03-30)
 
 ### Bug Fixes
